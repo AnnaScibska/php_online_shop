@@ -12,9 +12,6 @@ if(!empty($_GET['message'])){
     $message = $_REQUEST['message'];
 }
 
-
-
-
 $products = getAllProducts();
 $pageToDisplay = 'showProductsView.php';
 

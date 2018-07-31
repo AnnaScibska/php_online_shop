@@ -2,11 +2,16 @@
 
 function getAllProducts() {
 
-    $db = Database\Connection::getInstance();
-    $conn = $db->getConnection();
+    $conn = \Database\Connection::connect();
 
-    $stmt = $conn->prepare("SELECT Id, Name, Type, Description, Image, Price FROM product");
-    $stmt->execute();
+    try {
+        $stmt = $conn->prepare("SELECT Id, Name, Type, Description, Image, Price FROM product");
+        $stmt->execute();
+    }
+    catch(\PDOException $e)
+    {
+        echo $stmt . "<br>" . $e->getMessage();
+    }
 
     $products = array();
     foreach ($stmt->fetchAll() as $row)
@@ -14,7 +19,7 @@ function getAllProducts() {
         $products[] = $row;
     }
 
-    $conn = null;
+    Database\Connection::disconnect();
 
     return $products;
 }

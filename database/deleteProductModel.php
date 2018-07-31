@@ -1,7 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: annas
- * Date: 30/07/2018
- * Time: 14:51
- */
+
+function removeProduct($id) {
+    $conn = \Database\Connection::connect();
+
+    try {
+        $sql = "DELETE FROM product WHERE Id = ?";
+        $q = $conn->prepare($sql);
+        $q->execute(array($id));
+    }
+    catch(\PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+
+    Database\Connection::disconnect();
+}

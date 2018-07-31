@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
     $productImage = $_POST['product_image'];
     $productPrice = $_POST['product_price'];
 
-    addProduct($message, $productName, $productType, $productDescription , $productImage, $productPrice);
+    addProduct($productName, $productType, $productDescription , $productImage, $productPrice);
     $message = "New record created successfully";
     header("Location: showProductsController.php?message=". $message);
 }

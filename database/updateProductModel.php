@@ -2,30 +2,36 @@
 
 function updateProduct ($productId, $productName, $productType, $productDescription , $productImage, $productPrice) {
 
-    $db = Database\Connection::getInstance();
-    $conn = $db->getConnection();
+    $conn = \Database\Connection::connect();
+    try {
+        $sql = "UPDATE product SET Name = ?, Type = ?, Description = ?, Image = ?, Price = ? WHERE Id = ?";
+        $q = $conn->prepare($sql);
+        $q->execute(array($productName, $productType, $productDescription, $productImage, $productPrice, $productId));
+    }
+    catch(\PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
 
-    $sql = "UPDATE product SET Name = ?, Type = ?, Description = ?, Image = ?, Price = ? WHERE Id = ?";
-
-    $q = $conn->prepare($sql);
-    $q->execute(array($productName, $productType, $productDescription , $productImage, $productPrice, $productId));
-
-    $conn = null;
+    Database\Connection::disconnect();
 }
 
 function findProduct($id) {
 
-    $db = Database\Connection::getInstance();
-    $conn = $db->getConnection();
+    $conn = \Database\Connection::connect();
 
-    $sql = "SELECT Id, Name, Type, Description, Image, Price FROM product WHERE Id = ?;";
+    try {
+        $sql = "SELECT Id, Name, Type, Description, Image, Price FROM product WHERE Id = ?;";
+        $q = $conn->prepare($sql);
+        $q->execute(array($id));
+        $product = $q->fetch(\PDO::FETCH_ASSOC);
+    }
+    catch(\PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
 
-    $q = $conn->prepare($sql);
-    $q->execute(array($id));
-
-    $product = $q->fetch(\PDO::FETCH_ASSOC);
-
-    $conn = null;
+    Database\Connection::disconnect();
 
     return $product;
 }

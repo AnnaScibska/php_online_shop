@@ -3,40 +3,37 @@ namespace Database;
 
 class Connection
 {
-    private $connection;
-    private static $_instance;
+    private static $connection = null;
+    // name: $oonnection??
 
-    private $dbhost;
-    private $dbuser;
-    private $dbpass;
-    private $dbname;
+    private static $dbHost;
+    private static $dbUser;
+    private static $dbPass;
+    private static $dbName;
 
-    /*
-    Get an instance of the Database
-    @return Instance
-    */
-    public static function getInstance(){
-        if(!self::$_instance) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
+    public function __construct() {
+        die('Init function is not allowed');
     }
-    // Constructor
-    private function __construct() {
-        try{
-            require_once '../config.php';
-            $this->connection = new \PDO('mysql:host='.$this->dbhost.';dbname='.$this->dbname, $this->dbuser, $this->dbpass);
-            $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            // Error handling
-        }catch(\PDOException $e){
-            die("Failed to connect to DB: ". $e->getMessage());
-        }
-    }
-    // Magic method clone is empty to prevent duplication of connection
-    private function __clone(){}
 
-    // Get the connection
-    public function getConnection(){
-        return $this->connection;
+    public function __set($value, $attr) {
+        self::$attr = $value;
+    }
+
+    public static function connect() {
+        if ( null == self::$connection ) {
+            try {
+                require_once '../config.php';
+                self::$connection = new \PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUser, self::$dbPass);
+                self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            }
+            catch(\PDOException $e) {
+                die("Failed to connect to DB: ". $e->getMessage());
+            }
+        }
+        return self::$connection;
+    }
+
+    public static function disconnect() {
+        self::$connection = null;
     }
 }

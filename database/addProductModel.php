@@ -1,9 +1,8 @@
 <?php
 
-function addProduct (&$message, $productName, $productType, $productDescription , $productImage, $productPrice) {
+function addProduct ($productName, $productType, $productDescription , $productImage, $productPrice) {
 
-    $db = Database\Connection::getInstance();
-    $conn = $db->getConnection();
+    $conn = \Database\Connection::connect();
 
     try {
         $sql = "INSERT INTO product (Name, Type, Description, Image, Price) VALUES (?, ?, ?, ?, ?)";
@@ -15,5 +14,5 @@ function addProduct (&$message, $productName, $productType, $productDescription 
         echo $sql . "<br>" . $e->getMessage();
     }
 
-    $conn = null;
+    Database\Connection::disconnect();
 }
