@@ -4,6 +4,13 @@
         <label class="control-label" for="product_name">Product name</label><br/>
         <input name="product_name" type="text" id="product_name"><br/><br/>
 
+        <label class="control-label" for="product_type">Product type</label><br/>
+        <select name="product_type" id="product_type">
+            <option value="toy">toy</option>
+            <option value="food">food</option>
+            <option value="medicine">medicine</option>
+        </select><br/><br/>
+
         <label class="control-label" for="product_description">Product description</label><br/>
         <input name="product_description" type="text" id="product_description"><br/><br/>
 

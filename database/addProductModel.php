@@ -1,15 +1,14 @@
 <?php
 
-function addProduct (&$message, $productName, $productDescription , $productImage, $productPrice) {
+function addProduct (&$message, $productName, $productType, $productDescription , $productImage, $productPrice) {
 
     $db = Database\Connection::getInstance();
     $conn = $db->getConnection();
 
     try {
-        $sql = "INSERT INTO product (Name, Description, Image, Price) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO product (Name, Type, Description, Image, Price) VALUES (?, ?, ?, ?, ?)";
         $q = $conn->prepare($sql);
-        $q->execute(array($productName, $productDescription , $productImage, $productPrice));
-        $message = "New record created successfully";
+        $q->execute(array($productName, $productType, $productDescription , $productImage, $productPrice));
     }
     catch(\PDOException $e)
     {
@@ -17,5 +16,4 @@ function addProduct (&$message, $productName, $productDescription , $productImag
     }
 
     $conn = null;
-    header("Location: showProductsController.php?message=". $message);
 }

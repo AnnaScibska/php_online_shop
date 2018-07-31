@@ -1,17 +1,20 @@
 <?php
 
 require_once '../Autoloader.php';
+require_once '../database/showProductsModel.php';
+
 Autoloader::register();
 
-$message=0;
+$title = 'List of Products';
+$message = '';
 
 if(!empty($_GET['message'])){
     $message = $_REQUEST['message'];
 }
 
-require_once '../database/fetchProductsModel.php';
 
-$title = 'List of Products';
+
+
 $products = getAllProducts();
 $pageToDisplay = 'showProductsView.php';
 
