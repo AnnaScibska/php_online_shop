@@ -4,7 +4,6 @@ namespace Database;
 class Connection
 {
     private static $connection = null;
-    // name: $oonnection??
 
     private static $dbHost;
     private static $dbUser;
@@ -22,7 +21,7 @@ class Connection
     public static function connect() {
         if ( null == self::$connection ) {
             try {
-                require_once '../config.php';
+                require_once '../../config.php';
                 self::$connection = new \PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUser, self::$dbPass);
                 self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             }

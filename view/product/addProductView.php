@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="../controller/addProductController.php">
+    <form method="post" action="addProductController.php">
 
         <label class="control-label" for="product_name">Product name</label><br/>
         <input name="product_name" type="text" id="product_name"><br/><br/>
@@ -21,6 +21,6 @@
         <input name="product_price" type="text" id="product_price"><br/><br/>
 
         <input type="submit" name="submit" value="Add product">
-        <a href="../index.php" class="btn">Return</a>
+        <a href="../../index.php" class="btn">Return</a>
     </form>
 </div>
