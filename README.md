@@ -71,6 +71,7 @@ TODO
 6. add additional condition to login (eg.: checking if not empty), add security and RegEx
 7. add missing properties of classes (only essential used for the moment)
 8. handling errors and exceptions
+9. add pictures from user computer to the server (not the DB), now: link required to the picture already online
 
 
 THINGS THAT NEED FIXING
