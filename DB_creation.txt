@@ -1,0 +1,44 @@
+CREATE DATABASE pupuce
+
+CREATE TABLE user(
+	_user_Id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT ,
+	_user_Email CHAR(255) NOT NULL ,
+	_user_FirstName CHAR(255) NOT NULL , 
+	_user_Password CHAR (255) NOT NULL ,
+	_user_RegistrationDate timestamp
+);
+
+CREATE TABLE product(
+	_product_Id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT ,
+	_product_Name CHAR(255) NOT NULL,
+	_product_Type CHAR(255) NOT NULL,
+	_product_Description VARCHAR(1000) NOT NULL,
+	_product_Image VARCHAR(255) NOT NULL,
+	_product_Price DOUBLE NOT NULL,
+	_product_Quantity INT(10) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE employee ( 
+	_user_Id INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT , 
+	_user_FirstName CHAR(255) NOT NULL , 
+	_user_Email CHAR(255) NOT NULL , 
+	_user_Password CHAR(255) NOT NULL,
+	_superior_Id INT(10) NOT NULL DEFAULT '1' , 
+	FOREIGN KEY (_superior_Id) REFERENCES employee(_user_Id)
+);
+
+CREATE TABLE cart(
+	_cart_Id int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	_user_Id int(10) NOT NULL,
+	FOREIGN KEY (_user_Id) REFERENCES user(_user_Id)
+);
+
+
+CREATE TABLE cartItem(
+	_cartItem_Id int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	_cartItem_Quantity int(10) NOT NULL,
+	_cart_Id int(10) NOT NULL,
+	_product_Id int(10) NOT NULL,
+	FOREIGN KEY (_cart_Id) REFERENCES cart(_cart_Id),
+	FOREIGN KEY (_product_Id) REFERENCES product(_product_Id)
+);

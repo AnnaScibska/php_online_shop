@@ -11,21 +11,7 @@ class Product
     private $_product_Price;
     private $_product_Quantity;
 
-//    public function __construct($id = 0, $name = "", $product_Type = "", $description= "", $image= "", $price = 0)
-//    {
-//        $this->_product_Id = $id;
-//        $this->_product_Name = $name;
-//        $this->_product_Type = $product_Type;
-//        $this->_product_Description = $description;
-//        $this->_product_Image = $image;
-//        $this->_product_Price = $price;
-//        $this->_product_Quantity = 0;
-//    }
-
-    public function __construct()
-    {
-
-    }
+    // getter and setter
 
     public function __get($attr) {
         return $this->$attr;
@@ -35,6 +21,7 @@ class Product
         $this->$attr = $value;
     }
 
+    // adding a new product
     function addProduct ($product) {
 
         $conn = \Database\Connection::connect();
@@ -52,11 +39,7 @@ class Product
         \Database\Connection::disconnect();
     }
 
-    public function getProductInfo()
-    {
-
-    }
-
+//    getProductInfo()
     function findProduct($id) {
 
         $conn = \Database\Connection::connect();
@@ -77,6 +60,7 @@ class Product
         return $product;
     }
 
+//    updating a product
     function updateProduct ($product) {
 
         $conn = \Database\Connection::connect();
@@ -93,6 +77,7 @@ class Product
         Database\Connection::disconnect();
     }
 
+//    removing product
     function removeProduct($product) {
         $conn = \Database\Connection::connect();
 
@@ -107,6 +92,32 @@ class Product
         }
 
         \Database\Connection::disconnect();
+    }
+
+// displaying all the products
+    function getAllProducts() {
+
+        $conn = \Database\Connection::connect();
+
+        try {
+            $sql = "SELECT _product_Id, _product_Name, _product_Type, _product_Description, _product_Image, _product_Price, _product_Quantity FROM product";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+        }
+        catch(\PDOException $e)
+        {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+
+        $products = array();
+        foreach ($stmt->fetchAll(\PDO::FETCH_CLASS, '\App\Product') as $row)
+        {
+            $products[] = $row;
+        }
+
+        \Database\Connection::disconnect();
+
+        return $products;
     }
 
 }

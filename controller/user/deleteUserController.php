@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../Autoloader.php';
-require_once '../../database/deleteUserModel.php';
 Autoloader::register();
 session_start();
 
@@ -21,12 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
 
 
     $id = $_POST['id'];
-    $user = findUser($id);
-    removeUser($user);
+    $user = new App\User();
+    $user = $user->findUser($id);
+    $user->removeUser($user);
     $message = 'User deleted successfully';
     header("Location: showUsersController.php?message=". $message);
 }
 
-$user = findUser($id);
+$user = new \App\User();
+$user = $user->findUser($id);
 
 require_once '../../view/mainView.php';

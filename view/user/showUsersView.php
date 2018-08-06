@@ -1,4 +1,3 @@
-<h3><?php if ($message) {echo $message; $message = '';} ?></h3>
 <div class="container">
     <table>
         <tr><th>Id</th><th>First Name</th><th>Email</th><th>Registration Date</th></tr>

@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../Autoloader.php';
-require_once '../../database/showUsersModel.php';
 Autoloader::register();
 session_start();
 
@@ -12,7 +11,8 @@ if(!empty($_GET['message'])){
     $message = $_REQUEST['message'];
 }
 
-$users = getAllUsers();
+$user = new \App\User();
+$users = $user->getAllUsers();
 $pageToDisplay = 'user/showUsersView.php';
 
 require_once '../../view/mainView.php';

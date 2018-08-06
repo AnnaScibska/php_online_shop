@@ -3,10 +3,10 @@ namespace App;
 
 abstract class Person
 {
-    private $_user_Id;
+    protected $_user_Id;
 //    public $lastName;
-    private $_user_FirstName;
-    private $_user_Email;
+    protected $_user_FirstName;
+    protected $_user_Email;
 //    public $address;
 //    public $postalCode;
 //    public $city;
