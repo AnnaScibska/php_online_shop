@@ -3,15 +3,17 @@
 GENERAL INFORMATION:
 
 * Code divided into 3 parts:
+
     1. Classes
     2. controllers of different parts of the page (eg. adding user, login, adding products to the cart)
     3. templates
         - main template (with CSS and Bootstrap links etc)
         - templates for different parts of the page
-    Ad 1.
-        Classes: namespaces used
-    Ad 2.
-        Controllers follow the same schema:
+    
+    Ad 1. Classes: namespaces used
+        
+    Ad 2. Controllers follow the same schema:
+        
             - autoloader used
             - variable defined (eg.: title for the page, template to display)
             - $_POST, $_GET, $_SESSION superglobals used
@@ -20,8 +22,9 @@ GENERAL INFORMATION:
             - data passed to View
             - Example with comments in: pupuce/controller/login/loginController.php
                     and                 pupuce/controller/product/showProductsController.php
-    Ad 3.
-        Detailed templates share similar schema:
+                    
+    Ad 3. Detailed templates share similar schema:
+        
             - HTML code with PHP variables, passed from the controller
             - different code displayed depending on the condition (eg. who is logged),
             - loops used to iterate over passed arrays or objects
@@ -39,6 +42,7 @@ THINGS THAT WORK:
 2. CRUD for USERS (adding, reading, editing, removing users)
 3. login system for client/user and admin/employee
 3. different parts accessible depending on who is logged / different view depending on who is logged
+
         eg. admin
             - possibility of adding and removing and updating product to DB but not adding product to the cart
             - possibility of adding/removing/updating client/user
@@ -49,6 +53,7 @@ THINGS THAT WORK:
         eg. client/user
             - possibility to register and logging in/out
             - possibility to add product to the basket (in theory for the moment)
+            
 4. message displayed after every action (eg. product successfully added)
 5. CART displaed for user with id 1, after logged (anna@gmail.com, pass: 123);
     displays quantity and calculates subtotal and total
