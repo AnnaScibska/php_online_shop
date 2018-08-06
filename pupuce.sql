@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 06 Sie 2018, 01:53
--- Wersja serwera: 10.1.34-MariaDB
--- Wersja PHP: 7.2.7
+-- Generation Time: Aug 06, 2018 at 09:34 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `pupuce`
+-- Database: `pupuce`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Zrzut danych tabeli `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`_cart_Id`, `_user_Id`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `cart` (`_cart_Id`, `_user_Id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `cartitem`
+-- Table structure for table `cartitem`
 --
 
 CREATE TABLE `cartitem` (
@@ -55,7 +55,7 @@ CREATE TABLE `cartitem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Zrzut danych tabeli `cartitem`
+-- Dumping data for table `cartitem`
 --
 
 INSERT INTO `cartitem` (`_cartItem_Id`, `_cartItem_Quantity`, `_cart_Id`, `_product_Id`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `cartitem` (`_cartItem_Id`, `_cartItem_Quantity`, `_cart_Id`, `_prod
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `employee`
+-- Table structure for table `employee`
 --
 
 CREATE TABLE `employee` (
@@ -79,7 +79,7 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Zrzut danych tabeli `employee`
+-- Dumping data for table `employee`
 --
 
 INSERT INTO `employee` (`_user_Id`, `_user_FirstName`, `_user_Email`, `_user_Password`, `_superior_Id`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `employee` (`_user_Id`, `_user_FirstName`, `_user_Email`, `_user_Pas
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -104,7 +104,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Zrzut danych tabeli `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`_product_Id`, `_product_Name`, `_product_Type`, `_product_Description`, `_product_Image`, `_product_Price`, `_product_Quantity`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `product` (`_product_Id`, `_product_Name`, `_product_Type`, `_produc
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -133,7 +133,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Zrzut danych tabeli `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`_user_Id`, `_user_FirstName`, `_user_Email`, `_user_RegistrationDate`, `_user_Password`) VALUES
@@ -143,18 +143,18 @@ INSERT INTO `user` (`_user_Id`, `_user_FirstName`, `_user_Email`, `_user_Registr
 (4, 'Jane', 'jane@gmail.com', '2018-08-05 23:52:48', '666');
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`_cart_Id`),
   ADD KEY `_user_Id` (`_user_Id`);
 
 --
--- Indeksy dla tabeli `cartitem`
+-- Indexes for table `cartitem`
 --
 ALTER TABLE `cartitem`
   ADD PRIMARY KEY (`_cartItem_Id`),
@@ -162,20 +162,20 @@ ALTER TABLE `cartitem`
   ADD KEY `_product_Id` (`_product_Id`);
 
 --
--- Indeksy dla tabeli `employee`
+-- Indexes for table `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`_user_Id`),
   ADD KEY `_user_Id` (`_superior_Id`);
 
 --
--- Indeksy dla tabeli `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`_product_Id`);
 
 --
--- Indeksy dla tabeli `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`_user_Id`);
@@ -185,54 +185,54 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `_cart_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `cartitem`
+-- AUTO_INCREMENT for table `cartitem`
 --
 ALTER TABLE `cartitem`
   MODIFY `_cartItem_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `employee`
+-- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
   MODIFY `_user_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `_product_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT dla tabeli `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `_user_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Ograniczenia dla zrzutów tabel
+-- Constraints for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`_user_Id`) REFERENCES `user` (`_user_Id`);
 
 --
--- Ograniczenia dla tabeli `cartitem`
+-- Constraints for table `cartitem`
 --
 ALTER TABLE `cartitem`
   ADD CONSTRAINT `cartitem_ibfk_1` FOREIGN KEY (`_cart_Id`) REFERENCES `cart` (`_cart_Id`),
   ADD CONSTRAINT `cartitem_ibfk_2` FOREIGN KEY (`_product_Id`) REFERENCES `product` (`_product_Id`);
 
 --
--- Ograniczenia dla tabeli `employee`
+-- Constraints for table `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`_superior_Id`) REFERENCES `employee` (`_user_Id`);

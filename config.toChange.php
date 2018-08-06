@@ -1,4 +1,4 @@
-<?php
+git <?php
 
 Database\Connection::$dbHost = "localhost";
 Database\Connection::$dbUser = "dbUser";
