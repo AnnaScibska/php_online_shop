@@ -55,8 +55,8 @@ THINGS THAT WORK:
             - possibility to add product to the basket (in theory for the moment)
             
 4. message displayed after every action (eg. product successfully added)
-5. CART displaed for user with id 1, after logged (anna@gmail.com, pass: 123);
-    displays quantity and calculates subtotal and total
+5. CART displayed for user with id 1, after logged (anna@gmail.com, pass: 123);
+    displays quantity of the products and calculates subtotal and total
 6. file: config.toChange.php requires the real data (DB host, password etc) and changing name to config.php
 
 TODO
