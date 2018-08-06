@@ -1,10 +1,10 @@
 .message {
     padding: 15px;
     margin: 10px;
-    border: 1px solid #af0303;
+    border: 1px solid #006620;
     border-radius: 7px;
-    background-color: #ffc4c4;
-    color: #af0303;
+    background-color: #bbf7ce;
+    color: #006620;
 }
 
 td, th {
